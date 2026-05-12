@@ -4,6 +4,7 @@ import Login from './pages/auth/Login'
 import AuthWrapper from './pages/auth/AuthWrapper';
 import Register from './pages/auth/Register';
 import SecuredRoutes from './secure/SecuredRoutes';
+import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
 
       {/* Secured Routes */}
       <Route path="/dashboard" element={<SecuredRoutes/>}>
-      
+        <Route path="" element={<Dashboard/>} />
       </Route>
     </Routes>
   )

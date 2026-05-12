@@ -10,7 +10,7 @@ const SidebarProfile = () => {
           <p className="text-sm text-gray-500">john.doe@example.com</p>
         </div>
         <div className="user-role absolute top-4 right-5" >
-            <span className="text-xs bg-(--primary-color) text-white px-2 py-1 rounded-full">Admin</span>
+            <span className="text-xs bg-(--primary-color) text-white px-2 py-1 rounded-full">Super Admin</span>
         </div>
     </div>
   )

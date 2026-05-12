@@ -22,7 +22,7 @@ const SidebarLists = ({ userRole = 'Super Admin' }) => {
                 isLogout
                   ? `text-[var(--secondary-color)] hover:bg-gray-100`
                   : isActive
-                  ? 'bg-[var(--secondary-color)] text-white'
+                  ? 'bg-[var(--primary-color)] text-white'
                   : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
