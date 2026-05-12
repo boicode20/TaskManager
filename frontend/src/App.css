@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+
+:root{
+    --primary-color: #457fc0;
+    --secondary-color: #de7257;
+    --light-color : #f1f1f1;
+    --dark-color: #3f3f3f;
+}
+
+
+.auth-wrapper{
+    background-image: url('../src/assets/auth-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

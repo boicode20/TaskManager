@@ -1,0 +1,9 @@
+/* Logo Styles */
+.logo h1{
+    font-family: 'Supermercado One', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.logo h1 span{
+    color: var(--secondary-color);
+}
