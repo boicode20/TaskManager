@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 
 :root{
     --primary-color: #457fc0;
@@ -6,10 +7,16 @@
     --light-color : #f1f1f1;
     --dark-color: #3f3f3f;
     --greeting-bg:linear-gradient(89deg,rgba(69, 127, 192, 1) 0%, rgba(57, 107, 163, 1) 54%, rgba(69, 127, 192, 1) 100%); 
+    --sidebar-active: #457fc0;
 
 }
 
-
+body {
+    font-family: 'Inter', sans-serif;
+}
+h1,h2 {
+    font-family: 'Poppins', sans-serif;
+}
 .auth-wrapper{
     background-image: url('../src/assets/auth-bg.png');
     background-size: cover;
