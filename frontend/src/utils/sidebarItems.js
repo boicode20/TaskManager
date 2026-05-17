@@ -8,22 +8,22 @@ import { LuNotebookText } from "react-icons/lu";
 export const menuItemsByRole = {
     'Super Admin': [
       { id: 'dashboard', label: 'Dashboard', icon: MdOutlineDashboard, path: '/dashboard' },
-      { id: 'manage-admin', label: 'Manage Admin', icon: RiAdminLine, path: '/manage-admin' },
-      { id: 'manage-member', label: 'Manage Member', icon: FaUsers, path: '/manage-member' },
-      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/settings' },
-      { id: 'logout', label: 'Logout', icon: CiLogout, path: '/logout' },
+      { id: 'manage-admin', label: 'Manage Admin', icon: RiAdminLine, path: '/dashboard/manage-admin' },
+      { id: 'manage-member', label: 'Manage Member', icon: FaUsers, path: '/dashboard/manage-member' },
+      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/dashboard/settings' },
+      { id: 'logout', label: 'Logout', icon: CiLogout, path: '/dashboard/logout' },
     ],
     'Admin': [
       { id: 'dashboard', label: 'Dashboard', icon: MdOutlineDashboard, path: '/dashboard' },
-      { id: 'task', label: 'Task', icon: LuNotebookText, path: '/task' },
-      { id: 'manage-team', label: 'Manage Team', icon: FaUsers, path: '/manage-team' },
-      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/settings' },
-      { id: 'logout', label: 'Logout', icon: CiLogout, path: '/logout' },
+      { id: 'task', label: 'Task', icon: LuNotebookText, path: '/dashboard/task' },
+      { id: 'manage-team', label: 'Manage Team', icon: FaUsers, path: '/dashboard/manage-team' },
+      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/dashboard/settings' },
+      { id: 'logout', label: 'Logout', icon: CiLogout, path: '/dashboard/logout' },
     ],
     'Member': [
       { id: 'dashboard', label: 'Dashboard', icon: MdOutlineDashboard, path: '/dashboard' },
-      { id: 'task', label: 'Task', icon: LuNotebookText, path: '/task' },
-      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/settings' },
+      { id: 'task', label: 'Task', icon: LuNotebookText, path: '/dashboard/task' },
+      { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/dashboard/settings' },
       { id: 'logout', label: 'Logout', icon: CiLogout, path: '/logout' },
     ],
   };

@@ -28,7 +28,7 @@ const DoughnutChart = () => {
       {/* Header with Title and Period Selector */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h2 className="text-xl md:text-2xl font-bold text-gray-800">
+          <h2 className="text-1xl font-semibold text-[#424242]">
             Task Status Distribution
           </h2>
           <p className="text-sm text-gray-500 mt-1">

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AuthInput = ({ value, label, type, id, placeholder , handleChange, isRequired, name, Icon,handleShowPassword}) => {
+const CustomInput = ({ value, label, type, id, placeholder , handleChange, isRequired, name, Icon,handleShowPassword}) => {
 
   return (
     <div className='auth-input flex flex-col w-full'>
@@ -13,4 +13,4 @@ const AuthInput = ({ value, label, type, id, placeholder , handleChange, isRequi
   )
 }
 
-export default AuthInput
+export default CustomInput

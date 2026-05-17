@@ -3,7 +3,6 @@ import Logo from '../../components/Logo/Logo'
 import AuthBox from './AuthBox';
 import AuthHeader from './AuthHeader';
 import AuthForm from './AuthForm';
-import AuthInput from './AuthInput';
 import { useAuthInputChange } from '../../hooks/useAuthInputChange.js';
 import { FaUserCircle } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
@@ -11,6 +10,7 @@ import { FaEye } from "react-icons/fa6";
 import { useShowPassword } from '../../utils/useShowPassword.js';
 import api from '../../api/api.js';
 import { UserContext } from '../../provider/UserProvider.jsx';
+import CustomInput from '../../components/Input/CustomInput.jsx';
 
 const Login = () => {
   const {user,setUser} = useContext(UserContext)
@@ -51,9 +51,9 @@ const Login = () => {
       <AuthHeader text="Login to Your Account" tColor="--primary-color" />
       <AuthForm onSubmit={userLogin} bText={loading?"Logging in...":"Login"} bColor="(--primary-color)" authType="Login" loading={loading}>
         {/* Username input */}
-        <AuthInput label="Username" type="text" id="username" placeholder="Enter your username" value={formData.username} isRequired={true} handleChange={handleChange} name="username" Icon={FaUserCircle}/>
+        <CustomInput label="Username" type="text" id="username" placeholder="Enter your username" value={formData.username} isRequired={true} handleChange={handleChange} name="username" Icon={FaUserCircle}/>
         {/* Password input */}
-        <AuthInput label="Password" type={showPassword?"text":"password"} id="password" placeholder="Enter your password" value={formData.password} isRequired={true} handleChange={handleChange} name="password" Icon={showPassword ? FaEye : FaEyeLowVision } handleShowPassword={handleShowPassword}/>
+        <CustomInput label="Password" type={showPassword?"text":"password"} id="password" placeholder="Enter your password" value={formData.password} isRequired={true} handleChange={handleChange} name="password" Icon={showPassword ? FaEye : FaEyeLowVision } handleShowPassword={handleShowPassword}/>
 
       </AuthForm>
     </AuthBox>
