@@ -1,4 +1,4 @@
-import {AdminSchema} from '../schema/admin.js' 
+import {Admin} from '../schema/admin.js' 
 import crypto from 'crypto'
 
 
@@ -9,7 +9,7 @@ export const newUniqueCode = async () =>{
     while (exists) {
     code = generateCode()
 
-    exists = await AdminSchema.findOne({ "adminCode.code":code })
+    exists = await Admin.findOne({ "adminCode.code":code })
     
     }
 

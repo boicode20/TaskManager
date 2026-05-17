@@ -5,28 +5,33 @@ import { hashPassword } from '../utils/hashPassword.js';
 
 
 export const registerAdmin = async(req,res) =>{
-    const {name,username,email,password,adminCode} = req.body
+    const {name,username,email,password} = req.body
+    console.log(email)
     const superAdminID = req.user._id
-    if(name===''||username===''||email===''||password===''||adminCode==='') return res.status(400).json({message: "All fields are required" })
+    if(name===''||username===''||email===''||password==='') return res.status(400).json({message: "All fields are required" })
     
     try{
         const superAdmin = await SuperAdmin.findOne({_id:superAdminID})
         if(!superAdmin) return res.status(404).json({message:"Unauthorized access."})
 
 
-        const existingAdmin = await Admin.findOne({ username })
-        if(existingAdmin) return res.status(400).json({message:"Username already used."})
-        if(existingAdmin.email === email) return res.status(400).json({message:"Email already used."})
-        if(existingAdmin.adminCode === adminCode) return res.status(400).json({message:"Admin code already used."})
-
-        const hashPassword = await hashPassword(password)
+        const existingAdmin = await Admin.findOne({ $or: [
+            { email: email },
+            { username: username }
+        ] })
+        if(existingAdmin) return res.status(400).json({message:"Admin with the same email or username already exists."})
+        
+            
+        const hashedPassword = await hashPassword(password)
         const aCode = await newUniqueCode()
-
+        const existingAdminCode = await Admin.findOne({ "adminCode.code":aCode })
+        if(existingAdminCode) return res.status(400).json({message:"Admin code already used."})
+            
         const newAdmin = await Admin.create({
             name,
             username,
             email,
-            password: hashPassword,
+            password: hashedPassword,
             adminCode: {
                 code:aCode,
                 createdBy: superAdmin._id

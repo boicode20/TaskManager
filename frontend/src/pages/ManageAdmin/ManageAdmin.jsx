@@ -15,7 +15,7 @@ const ManageAdmin = () => {
           </Modal>
         )
       }
-      <AdminHeader/>
+      <AdminHeader setShowModal={setShowModal}/>
       <AdminCards/>
     </div>
   )

@@ -3,7 +3,7 @@ import AuthBox from './AuthBox';
 import Logo from '../../components/Logo/Logo';
 import AuthHeader from './AuthHeader';
 import AuthForm from './AuthForm';
-import { useAuthInputChange } from '../../hooks/useAuthInputChange.js';
+import { useInputChange } from '../../hooks/useInputChange.js';
 import { useSubmit } from '../../hooks/useSubmit.js';
 import { MdOutlineEmail } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
@@ -22,7 +22,7 @@ const Register = () => {
       // handle register custom hook
     const {handleRegister} = useSubmit(user);
     // handle input change custom hook
-    const {handleChange} = useAuthInputChange(setUser);
+    const {handleChange} = useInputChange(setUser);
 
     const {handleShowPassword} = useShowPassword({showPass: showPassword, setShowPass: setShowPassword})
 

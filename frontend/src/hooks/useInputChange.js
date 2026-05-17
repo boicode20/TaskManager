@@ -1,4 +1,4 @@
-export const useAuthInputChange = (setUser) => {
+export const useInputChange = (setUser) => {
      const handleChange = (e) => {
     const { name, value } = e.target;
         setUser(prevUser => ({

@@ -3,7 +3,7 @@ import Logo from '../../components/Logo/Logo'
 import AuthBox from './AuthBox';
 import AuthHeader from './AuthHeader';
 import AuthForm from './AuthForm';
-import { useAuthInputChange } from '../../hooks/useAuthInputChange.js';
+import { useInputChange } from '../../hooks/useInputChange.js';
 import { FaUserCircle } from "react-icons/fa";
 import { FaEyeLowVision } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa6";
@@ -22,7 +22,7 @@ const Login = () => {
   const [showPassword,setShowPassword] = useState(false)
 
   // handle input change custom hook
-  const {handleChange} = useAuthInputChange(setFormData)
+  const {handleChange} = useInputChange(setFormData)
   
   // handle show password
   const {handleShowPassword} = useShowPassword({showPass: showPassword, setShowPass: setShowPassword})
