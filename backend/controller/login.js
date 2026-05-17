@@ -2,7 +2,6 @@ import {Admin} from '../schema/admin.js'
 import {SuperAdmin} from '../schema/superAdmin.js'
 import {Member} from '../schema/member.js'
 import bcrypt from 'bcryptjs'
-import jwt from "jsonwebtoken"
 import { generateAccessToken } from '../utils/generateAccessToken.js';
 import { generateCookie } from '../utils/generateCookie.js';
 
@@ -14,7 +13,7 @@ export const login = async (req, res) => {
         let user = null
         // Check in SuperAdmin collection
         user = await SuperAdmin.findOne({ username: username })
-        
+
         if(!user) {
             // Check in Admin collection
             user = await Admin.findOne({ username: username })
@@ -29,9 +28,9 @@ export const login = async (req, res) => {
         }
 
         // Checking password 
-        const isPasswordValid = await bcrypt.compare(password, user.password)
+        const isPasswordValid = bcrypt.compareSync(password, user.password)
         if(!isPasswordValid){
-            return res.status(401).json({message: "Invalid password" });
+            return res.status(401).json({message: "Incorrect password" });
         }
 
         // Generate JWT token
@@ -39,10 +38,20 @@ export const login = async (req, res) => {
         // Cookies
         generateCookie(res,token)
 
-
-        return res.status(200).json({message:"Login successful", user})
+       
+        return res.status(200).json({message:"Login successful", user:{
+            _id:user._id,
+            name:user.name,
+            username:user.username,
+            email:user.email,
+            role:user.role,
+            avatar:user.avatar,
+            verified:user.verified
+        }})
 
     }catch(err){
-        return res.status(500).json({message: "Internal server error" });
+        console.log(err)
+        return res.status(500).json({message: "Internal server error" , error:err});
     }
 }
+

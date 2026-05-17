@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const AuthForm = ({ children, onSubmit , bText, bColor,authType}) => {
+const AuthForm = ({ children, onSubmit , bText, bColor,authType, loading}) => {
   return (
     <form onSubmit={onSubmit} className='auth-form flex flex-col gap-1'>
         {children}
@@ -10,7 +10,7 @@ const AuthForm = ({ children, onSubmit , bText, bColor,authType}) => {
                 <Link to="" className="underline text-[.9rem] text-[#4f4f4f]">Forgot your password?</Link>
             )
         }
-        <button type="submit" className={`bg-${bColor} text-white py-2 px-3 rounded-md hover:bg-${bColor}/90 transition-colors duration-300 mt-2 cursor-pointer font-semibold`}>
+        <button type="submit" className={`bg-${bColor} text-white py-2 px-3 rounded-md hover:bg-${bColor}/90 transition-colors duration-300 mt-2 cursor-pointer font-semibold`} disabled={loading}>
           {bText}
         </button>
         {/* add or register link button */}

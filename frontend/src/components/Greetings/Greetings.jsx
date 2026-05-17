@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{memo} from 'react';
 import './greeting.css';
 import { randomGreet } from '../../utils/randomGreet.js';
 
 
 const Greetings = ({ user}) => {
-  const randomGreeting =  randomGreet(user?.name || "John Doe");
+  const randomGreeting =  randomGreet(user.name.split(' ')[0]);
 
   return (
     <div className="greetings w-full h-24 flex items-center justify-start px-5 rounded-[0_0_10px_10px] text-white  shadow-lg">
@@ -15,4 +15,4 @@ const Greetings = ({ user}) => {
   );
 };
 
-export default Greetings
+export default memo(Greetings)

@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
 import { menuItemsByRole } from '../../utils/sidebarItems.js';
 
-const SidebarLists = ({ userRole = 'Super Admin' }) => {
+const SidebarLists = ({ user }) => {
+  
   const location = useLocation();
-  const menuItems = menuItemsByRole[userRole] || menuItemsByRole['Member'];
+  const menuItems = menuItemsByRole[user.role] ;
 
   return (
     <ul className="space-y-2 w-full mt-4 pl-2">
@@ -18,16 +19,16 @@ const SidebarLists = ({ userRole = 'Super Admin' }) => {
           <li key={item.id}>
             <Link
               to={item.path}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-[25px_0_0_25px] transition-all duration-200 block ${
+              className={`w-full flex items-center gap-2 px-4 py-3 rounded-[25px_0_0_25px] transition-all duration-200 ${
                 isLogout
-                  ? `text-[var(--secondary-color)] hover:bg-gray-100`
+                  ? `text-(--secondary-color) hover:bg-gray-100`
                   : isActive
-                  ? 'bg-[var(--primary-color)] text-white'
+                  ? ' text-(--sidebar-active)'
                   : 'text-gray-700 hover:bg-gray-100'
               }`}
             >
-              <Icon className="text-xl" />
-              <span className="font-medium">{item.label}</span>
+              <Icon className="text-1xl" />
+              <span className="text-[.9rem] font-medium">{item.label}</span>
             </Link>
           </li>
         );

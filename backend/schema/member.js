@@ -27,7 +27,7 @@ const memberSchema = new Schema({
         type: String,
         default: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
     },
-    parentUser:{
+    parentAdmin:{
         type: Schema.Types.ObjectId,
         ref: 'Admin',
         required: true

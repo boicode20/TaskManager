@@ -5,7 +5,12 @@ export const generateAccessToken = (user) =>{
         // User payload 
         {
             _id: user._id,
-            role: user.role
+            name: user.name,
+            username: user.username,
+            avatar: user.avatar,
+            email: user.email,
+            role: user.role,
+
         },
         // User secret key
         process.env.JWT_SECRET_KEY,
