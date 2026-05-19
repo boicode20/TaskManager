@@ -7,7 +7,7 @@ import { FaUserClock } from "react-icons/fa";
 
 const CardFooter = () => {
   return (
-        <div className="card-footer grid grid-cols-[auto_1fr] mt-4">
+        <div className="card-footer grid grid-cols-[auto_1fr] mt-2">
             
             <div className="card-joined text-gray-600 flex flex-nowrap items-center gap-3 " >
                 <FaCalendarWeek className="text-gray-600 text-1xl"/>

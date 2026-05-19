@@ -2,11 +2,11 @@ import React from 'react'
 import AdminCardHeader from '../AdminHeadFilter/AdminCardHeader';
 import AdminCardLists from './AdminCardLists';
 
-const AdminCards = () => {
+const AdminCards = ({adminList,setAdminLists}) => {
   return (
     <div className="admin-table mt-8">
-      <AdminCardHeader/>
-      <AdminCardLists/>
+      <AdminCardHeader setAdminLists={setAdminLists}/>
+      <AdminCardLists adminList={adminList}/>
     </div>
   )
 }

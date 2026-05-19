@@ -42,6 +42,24 @@ const adminSchema = new Schema({
         type: Boolean,
         default: false
     }
+},{timestamps: true})
+
+
+// Virtual setup to get all members under the admin
+adminSchema.virtual("members",{
+    ref: "Member",
+    localField: "_id",
+    foreignField:"parentAdmin"
 })
+
+// set virtual to be included in json obj
+adminSchema.set("toJSON",{
+    virtuals: true
+})
+// set virtual to obj to return as json res
+adminSchema.set("toObject",{
+    virtuals: true
+})
+
 
 export const Admin = model("Admin", adminSchema)

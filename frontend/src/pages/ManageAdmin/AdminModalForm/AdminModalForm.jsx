@@ -5,6 +5,7 @@ import { FaUserCircle } from "react-icons/fa"
 import { FaEyeLowVision,FaEye } from "react-icons/fa6"
 import api from '../../../api/api.js'
 import { useInputChange } from '../../../hooks/useInputChange.js'
+import { showToast } from '../../../utils/toastify.js';
 const AdminModalForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -51,9 +52,13 @@ const AdminModalForm = () => {
         confirmPassword: ''
       })
       setError('')
+
+      showToast("success","Admin account created.")
     }catch(err){
       setError(err.response.data.message || "An error occurred while adding the admin.")
       console.log(err.response)
+      showToast("error","Failed to create admin account.")
+
     }finally{
       setLoading(false)
     }

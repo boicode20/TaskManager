@@ -2,24 +2,28 @@ import React from 'react'
 import { FaUsers } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 
-const CardDetails = () => {
+const CardDetails = ({admin}) => {
   return (
-    <div className="card-deatils grid grid-cols-2 gap-2 grid-rows-auto w-full h-auto p-2">
-            <div className="card-team flex justify-center items-center flex-nowrap flex-col  bg-(--primary-color) rounded-sm p-1 text-white">
+    <div className="card-deatils grid grid-cols-2 grid-rows-2 gap-1 grid-rows-auto w-full h-auto p-2 place-items-center">
+            <div className="card-team w-full py-1 flex justify-center items-center flex-nowrap flex-col  bg-(--primary-color) rounded-sm text-white text-[.9rem] col-1 row-1">
             
-                    <p className="text-1xl">5</p>
+                    <p className="">{admin.members?admin.members.length:0}</p>
                 <div className="teams text-sm flex flex-nowrap items-center gap-1">
-                    <FaUsers className=" text-1xl"/>
+                    <FaUsers className=""/>
                     <p>Team</p>
                 </div>
             </div>
             {/* Status */}
-            <div className="card-status flex justify-center items-center flex-nowrap flex-col gap-1 bg-[#18be63] text-white rounded-sm p-2">
-                <p className="text-1xl">Active</p>
+            <div className="card-status  w-full py-1 flex justify-center items-center flex-nowrap flex-col bg-[#18be63] text-[.9rem] text-white rounded-sm col-2 row-1 ">
+                <p className="">Active</p>
                 <div className="status text-sm flex flex-nowrap items-center gap-1">
-                    <FaUserCheck className=" text-1xl"/>
+                    <FaUserCheck className=""/>
                     <p>Status</p>
                 </div>
+            </div>
+            <div className="card-admin-code col-span-2 row-2 w-full py-1 flex justify-center items-center flex-nowrap flex-col  bg-[#f0f0f0] text-[.9rem] rounded-sm  text-[#4c4b4b]">
+                <h4 className="">Admin Code</h4>
+                <span className="font-semibold">{admin.adminCode.code}</span>
             </div>
         </div>
   )
