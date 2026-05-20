@@ -29,6 +29,9 @@ export const useFetchUserData = (user,setUser,setAdmins,setMembers,setLoading) =
             setError(error.response)
             setLoading(false)
 
+        }finally{
+            setLoading(false)
+
         }
     },[user])
 

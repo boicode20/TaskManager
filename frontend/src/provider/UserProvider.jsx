@@ -6,8 +6,8 @@ export const UserContext = createContext()
 
 const UserProvider = ({children}) => {
   const [user,setUser] = useState(null)
-  const [admins,setAdmins] = useState(null)
-  const [members,setMembers] = useState(null)
+  const [admins,setAdmins] = useState([])
+  const [members,setMembers] = useState([])
   const [loading,setLoading] = useState(false)
   const {error,userData} = useFetchUserData(user,setUser,setAdmins,setMembers,setLoading)
 
@@ -16,12 +16,23 @@ const UserProvider = ({children}) => {
     const getUserData = async () => {
       if(!user){
         console.log("Hello")
-        await userData('/user-data')
+        setLoading(true)
+        try{
+          await userData('/user-data')
+          setLoading(false)
+        }catch(err){
+          console.log(err)
+          setLoading(false)
+
+        }finally{
+          setLoading(false)
+        }
       }
     }
     getUserData()
   },[])
-  console.log({user,admins,members})
+
+  
   return (
     <UserContext.Provider value={{ user, setUser,admins,setAdmins,members,setMembers,loading,setLoading}}>
       {children}

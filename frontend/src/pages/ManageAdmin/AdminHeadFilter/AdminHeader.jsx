@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AdminHeader = ({ setShowModal }) => {
+const AdminHeader = ({ setShowModal, setAdminList }) => {
   return (
     <div className='admin-header w-full h-auto flex justify-between items-center'>
         <div className="admin-header-content">

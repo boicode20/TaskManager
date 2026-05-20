@@ -23,6 +23,12 @@ const adminSchema = new Schema({
         type: String,
         default: 'Admin'
     },
+    status:{
+        type: String,
+        enum: ['Active', 'Inactive', 'Disabled'],
+        default: 'Active'
+    }
+    ,
     avatar:{
         type: String,
         default: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'

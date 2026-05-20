@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CustomInput from '../../../components/Input/CustomInput'
 import { MdOutlineEmail } from "react-icons/md"
 import { FaUserCircle } from "react-icons/fa"
@@ -6,7 +6,9 @@ import { FaEyeLowVision,FaEye } from "react-icons/fa6"
 import api from '../../../api/api.js'
 import { useInputChange } from '../../../hooks/useInputChange.js'
 import { showToast } from '../../../utils/toastify.js';
+import { UserContext } from '../../../provider/UserProvider.jsx';
 const AdminModalForm = () => {
+  const {admins,setAdmins} = useContext(UserContext)
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -44,6 +46,7 @@ const AdminModalForm = () => {
         password: formData.password
       })
       console.log(response.data)
+      setAdmins(prevState => [...prevState, {...response.data.admin,members:0}])
       setFormData({
         fullName: '',
         email: '',
@@ -55,7 +58,8 @@ const AdminModalForm = () => {
 
       showToast("success","Admin account created.")
     }catch(err){
-      setError(err.response.data.message || "An error occurred while adding the admin.")
+      console.log(err)
+      setError(err?.response?.data?.message || "An error occurred while adding the admin.")
       console.log(err.response)
       showToast("error","Failed to create admin account.")
 

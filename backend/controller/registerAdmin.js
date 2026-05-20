@@ -37,7 +37,10 @@ export const registerAdmin = async(req,res) =>{
                 createdBy: superAdmin._id
             }
         })
-        return res.status(200).json({message:"New admin created.", admin:newAdmin})
+        const updatedNewAdmin = newAdmin.toObject()
+        delete updatedNewAdmin.password
+            
+        return res.status(200).json({message:"New admin created.", admin:updatedNewAdmin})
     }catch(err){
         console.log(err)
         return res.status(500).json({message: "Internal server error" })

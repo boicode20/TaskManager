@@ -1,6 +1,8 @@
 import React from 'react'
 import { FaUsers } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
+import { FaUserClock } from "react-icons/fa6";
+import { FaUserSlash } from "react-icons/fa";
 
 const CardDetails = ({admin}) => {
   return (
@@ -14,10 +16,12 @@ const CardDetails = ({admin}) => {
                 </div>
             </div>
             {/* Status */}
-            <div className="card-status  w-full py-1 flex justify-center items-center flex-nowrap flex-col bg-[#18be63] text-[.9rem] text-white rounded-sm col-2 row-1 ">
-                <p className="">Active</p>
+            <div className={"card-status  w-full py-1 flex justify-center items-center flex-nowrap flex-col  text-[.9rem] text-white rounded-sm col-2 row-1 " + (admin.status === "Active" ? "bg-(--active-color)" : admin.status === "Inactive" ? "bg-(--inactive-color)" : "bg-(--disabled-color)")}>
+                <p className="">{admin.status==="Active"?"Active":admin.status==="Inactive"?"Inactive":"Disabled"}</p>
                 <div className="status text-sm flex flex-nowrap items-center gap-1">
-                    <FaUserCheck className=""/>
+                    {admin.status === "Active" && <FaUserCheck className=""/>}
+                    {admin.status === "Inactive" && <FaUserClock className=""/>}
+                    {admin.status === "Disabled" && <FaUserSlash className=""/>}
                     <p>Status</p>
                 </div>
             </div>

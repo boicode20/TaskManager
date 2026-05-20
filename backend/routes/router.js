@@ -5,6 +5,7 @@ import { authMiddleware } from '../middleware/middleware.js';
 import { userData } from '../controller/userData.js';
 import { registerAdmin } from '../controller/registerAdmin.js';
 import { getAdminData } from '../controller/getAdminData.js';
+import { editAdminAccount } from '../controller/editAdminAccount.js';
 
 const routes = express.Router()
 
@@ -22,6 +23,12 @@ routes.post('/admin/add', authMiddleware, registerAdmin)
 
 // Login route
 routes.post('/login', login)
+
+
+// Edit admin account
+routes.put('/edit-admin',authMiddleware,editAdminAccount)
+
+
 
 // Logout route also delete cookie
 routes.post('/logout', authMiddleware, (req, res) => {

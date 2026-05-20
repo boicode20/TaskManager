@@ -4,8 +4,9 @@ import { MdEditSquare } from "react-icons/md";
 import { BsTrash3Fill } from "react-icons/bs";
 import { FaUserAltSlash } from "react-icons/fa";
 import { FaUserClock } from "react-icons/fa";
+import { convertDate } from '../../../utils/convertDate.js';
 
-const CardFooter = () => {
+const CardFooter = ({admin,setShowEditModal,setEditAdmin}) => {
   return (
         <div className="card-footer grid grid-cols-[auto_1fr] mt-2">
             
@@ -13,11 +14,14 @@ const CardFooter = () => {
                 <FaCalendarWeek className="text-gray-600 text-1xl"/>
                 <div className="joined text-[.8rem]">
                     <p>Joined:</p>
-                    <p>May 17, 2026</p>
+                    <p>{convertDate(admin.createdAt)}</p>
                 </div>
             </div>
             <div className="card-actions flex items-center justify-end gap-1">
-                <div className="action-edit cursor-pointer">
+                <div
+                 className="action-edit cursor-pointer"
+                onClick={()=>{setShowEditModal(true); setEditAdmin(admin);}}
+                >
                     <MdEditSquare className="text-1xl text-(--secondary-color)"/>
                 </div>
                 <div className="action-delete  p-2 cursor-pointer">

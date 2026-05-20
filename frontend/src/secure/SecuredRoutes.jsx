@@ -34,9 +34,11 @@ const SecuredRoutes = () => {
           loading && (<Loader/>)
         }
         <Navbar/>
-        <div className="w-full h-full grid grid-cols-[auto_1fr] relative">
+        <div className="w-full h-full grid grid-cols-[auto_1fr] fixed top-15   left-0">
         <Sidebar user={user}/>
+        <div className="secure-outlet w-full h-full max:h-auto overflow-y-scroll ">
         {<Outlet/>}
+        </div>
         </div>
     </div>
   )

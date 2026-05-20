@@ -32,8 +32,9 @@ const Login = () => {
         setLoading(true)
         try{
           const response = await api.post('/login', formData)
-          // console.log(response.data) 
+          // console.log(response.data)
           setUser(response.data.user)
+          window.location.href = '/dashboard'
         }catch(err){
           console.log(err.response)
           setLoading(false)

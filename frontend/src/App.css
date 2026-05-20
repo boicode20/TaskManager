@@ -11,6 +11,11 @@
     --greeting-bg:linear-gradient(89deg,rgba(69, 127, 192, 1) 0%, rgba(57, 107, 163, 1) 54%, rgba(69, 127, 192, 1) 100%); 
     --sidebar-active: #457fc0;
 
+    --active-color: #18be63;
+    --inactive-color: #de7257;
+    --disabled-color: #ff0000;
+
+
 }
 
 body {
