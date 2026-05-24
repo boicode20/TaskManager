@@ -5,7 +5,8 @@ import { authMiddleware } from '../middleware/middleware.js';
 import { userData } from '../controller/userData.js';
 import { registerAdmin } from '../controller/registerAdmin.js';
 import { getAdminData } from '../controller/getAdminData.js';
-import { editAdminAccount } from '../controller/editAdminAccount.js';
+import { editUserAccount } from '../controller/editUserAccount.js';
+import { deleteUserAccount } from '../controller/deleteUserAccount.js';
 
 const routes = express.Router()
 
@@ -25,8 +26,11 @@ routes.post('/admin/add', authMiddleware, registerAdmin)
 routes.post('/login', login)
 
 
-// Edit admin account
-routes.put('/edit-admin',authMiddleware,editAdminAccount)
+// Edit user account
+routes.put('/edit-user',authMiddleware,editUserAccount)
+
+// const delete admin acc 
+routes.delete('/delete-user/:type/:userId',authMiddleware,deleteUserAccount)
 
 
 

@@ -6,6 +6,7 @@ import Register from './pages/auth/Register';
 import SecuredRoutes from './secure/SecuredRoutes';
 import Dashboard from './pages/dashboard/Dashboard';
 import ManageAdmin from './pages/ManageAdmin/ManageAdmin';
+import AccountSettings from './pages/AccountSettings/AccountSettings';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/dashboard" element={<SecuredRoutes/>}>
         <Route path="" element={<Dashboard/>} />
         <Route path="manage-admin" element={<ManageAdmin/>} />
+        <Route path="account-settings" element={<AccountSettings/>} />
       </Route>
     </Routes>
   )

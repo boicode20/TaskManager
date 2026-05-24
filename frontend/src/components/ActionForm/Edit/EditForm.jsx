@@ -28,7 +28,8 @@ const EditForm = ({editAdmin,setEditAdmin,setOriginalAdmin,setShowEditModal,orig
     setLoading(true)
     try{
       
-      const response = await api.put('/edit-admin',{
+      const response = await api.put('/edit-user',{
+        user: 'admin',
         _id:editAdmin._id,
         name:editAdmin.name,
         email:editAdmin.email,

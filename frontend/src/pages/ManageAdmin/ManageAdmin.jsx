@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import AdminHeader from './AdminHeadFilter/AdminHeader';
+
 import AdminCards from './AdminCardLists/AdminCards';
 import Modal from '../../components/modal/Modal';
 import AdminModalForm from './AdminModalForm/AdminModalForm';
 import { UserContext } from '../../provider/UserProvider';
 import EditAction from '../../components/ActionForm/Edit/EditAction';
+import DeleteAction from '../../components/ActionForm/Delete/DeleteAction';
+import UserHeader from '../../components/ManageUser/UserHeader';
 
 const ManageAdmin = () => {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +14,8 @@ const ManageAdmin = () => {
   const [adminList,setAdminList] = useState(admins)
   const [showEditModal,setShowEditModal] = useState(false)
   const [editAdmin,setEditAdmin] = useState(null)
-  
+  const [showDeleteModal,setShowDeleteModal] = useState(false)
+  const [deleteAdmin,setDeleteAdmin] = useState(null)
   useEffect(()=>{
     setAdminList(admins)
   },[admins])
@@ -32,8 +35,15 @@ const ManageAdmin = () => {
           </Modal>
         )
       }
-      <AdminHeader setShowModal={setShowModal} setAdminList={setAdminList}/>
-      <AdminCards adminList={adminList} setAdminList={setAdminList} setShowEditModal={setShowEditModal} setEditAdmin={setEditAdmin}/>
+      {
+        showDeleteModal && (
+          <Modal setShowModal={setShowDeleteModal} title={"Delete Admin Account"} subTitle={"Are you sure you want to delete this admin account?"}>
+            <DeleteAction deleteUser={deleteAdmin} setShowDeleteModal={setShowDeleteModal} text={"Delete Admin Account"} setOriginalAdmin={setAdmins}/>
+          </Modal>
+        )
+      }
+      <UserHeader title={"Manage Admin"} desc={"Manage administrator accounts."} setShowModal={setShowModal} userType={"admin"}/>
+      <AdminCards adminList={adminList} setAdminList={setAdminList} setShowEditModal={setShowEditModal} setEditAdmin={setEditAdmin} setShowDeleteModal={setShowDeleteModal} setDeleteAdmin={setDeleteAdmin} />
     </div>
   )
 }

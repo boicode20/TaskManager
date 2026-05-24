@@ -23,12 +23,12 @@ const taskSchema = new Schema({
             assignedTo:{
                 type: Schema.Types.ObjectId,
                 ref: 'Member',
-                required: true
+                default: null
             },
             status:{
                 type: String,
-                enum:["Pending", "In Progress", "Completed"],
-                default: 'Pending'
+                enum:["","Pending", "In Progress", "Completed"],
+                default: ""
             }
         }
     
@@ -46,4 +46,4 @@ const taskSchema = new Schema({
 
 },{timestamps: true})
 
-export const TaskSchema = model("Task", taskSchema)
+export const Tasks = model("Task", taskSchema)

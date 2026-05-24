@@ -1,5 +1,5 @@
 import{Schema, model} from 'mongoose'
-
+import  {Tasks} from './tasks.js'
 const memberSchema = new Schema({
     name: {
         type: String,
@@ -39,6 +39,19 @@ const memberSchema = new Schema({
     verified:{
         type: Boolean,
         default: false
+    }
+})
+
+
+memberSchema.pre("findOneAndDelete", async function(){
+    try{
+        const member = await this.model.findOne(this.getFilter())
+        if(member){
+            await Tasks.updateMany({"tasks.assignedTo":member._id},{$pull:{tasks:{assignedTo:member._id}}})
+        }
+        
+    }catch(err){
+        console.log(err)
     }
 })
 

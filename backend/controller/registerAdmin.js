@@ -1,5 +1,6 @@
 import {Admin} from '../schema/admin.js'
 import {SuperAdmin} from '../schema/superAdmin.js'
+import {Member} from '../schema/member.js'
 import { newUniqueCode } from '../utils/generateCode.js';
 import { hashPassword } from '../utils/hashPassword.js';
 
@@ -14,12 +15,13 @@ export const registerAdmin = async(req,res) =>{
         const superAdmin = await SuperAdmin.findOne({_id:superAdminID})
         if(!superAdmin) return res.status(404).json({message:"Unauthorized access."})
 
-
-        const existingAdmin = await Admin.findOne({ $or: [
-            { email: email },
-            { username: username }
-        ] })
-        if(existingAdmin) return res.status(400).json({message:"Admin with the same email or username already exists."})
+        
+        const [adminExist,superAdminExist,memberExist] = await Promise.all([
+            await Admin.findOne({$or:[{email},{username}]}),
+            await SuperAdmin.findOne({$or:[{email},{username}]}),
+            await Member.findOne({$or:[{email},{username}]})
+        ])
+        if(adminExist||superAdminExist||memberExist) return res.status(400).json({message:"Email or Username already exists."})
         
             
         const hashedPassword = await hashPassword(password)

@@ -5,3 +5,5 @@ export const hashPassword = async (password) => {
     const hashedPassword = await bcrypt.hash(password, salt)
     return hashedPassword
 }
+
+ 

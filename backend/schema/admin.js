@@ -1,4 +1,6 @@
 import {Schema, model} from 'mongoose'
+import {Member} from './member.js'
+import  {Tasks} from './tasks.js'
 
 const adminSchema = new Schema({
     name: {
@@ -49,6 +51,21 @@ const adminSchema = new Schema({
         default: false
     }
 },{timestamps: true})
+
+
+// Pre delete, if admin delete all members  and all tasks to that admin will also deleted
+adminSchema.pre("findOneAndDelete", async function(){
+   try{
+    const admin = await this.model.findOne(this.getFilter())
+    if(admin){
+        await Member.deleteMany({parentAdmin:admin._id})
+        await Tasks.deleteMany({createdBy:admin._id})
+    }
+   }catch(err){
+        console.log(err)
+   }
+})
+
 
 
 // Virtual setup to get all members under the admin
