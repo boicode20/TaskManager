@@ -30,7 +30,7 @@ const UserProvider = ({children}) => {
       }
     }
     getUserData()
-  },[])
+  },[setUser])
 
   
   return (
