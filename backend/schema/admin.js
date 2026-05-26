@@ -5,21 +5,25 @@ import  {Tasks} from './tasks.js'
 const adminSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        maxlength: 50
     },
     username:{
         type:String,
-        required:true,
-        unique:true
+        requred:true,
+        unique:true,
+        maxlength: 50
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        maxlength: 100
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        minlength: 8
     },
     role:{
         type: String,

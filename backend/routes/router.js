@@ -7,7 +7,7 @@ import { registerAdmin } from '../controller/registerAdmin.js';
 import { getAdminData } from '../controller/getAdminData.js';
 import { editUserAccount } from '../controller/editUserAccount.js';
 import { deleteUserAccount } from '../controller/deleteUserAccount.js';
-import { updateUserFullname } from '../controller/updateUserFullname.js';
+import { updateUserFullname, updateUserPassword } from '../controller/updateAccountSetting.js';
 
 const routes = express.Router()
 
@@ -30,7 +30,7 @@ routes.post('/login', login)
 // Edit user account
 routes.put('/edit-user',authMiddleware,editUserAccount)
 routes.put('/account-settings/change-name', authMiddleware, updateUserFullname)
-
+routes.put('/account-settings/change-password', authMiddleware, updateUserPassword)
 
 
 // const delete admin acc 
