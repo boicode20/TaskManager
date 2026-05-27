@@ -44,7 +44,7 @@ const memberSchema = new Schema({
         type: Boolean,
         default: false
     }
-})
+},{timestamps:true})
 
 
 memberSchema.pre("findOneAndDelete", async function(){

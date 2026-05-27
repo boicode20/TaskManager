@@ -31,7 +31,7 @@ const UserProvider = ({children}) => {
     }
     getUserData()
   },[setUser])
-
+  console.log(user)
   
   return (
     <UserContext.Provider value={{ user, setUser,admins,setAdmins,members,setMembers,loading,setLoading}}>

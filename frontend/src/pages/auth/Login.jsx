@@ -18,6 +18,7 @@ const Login = () => {
     username: '',
     password: ''
   })
+  const [resResult,setResResult] = useState({result: "", error: null,message:""})
   const [loading,setLoading] = useState(false)
   const [showPassword,setShowPassword] = useState(false)
 
@@ -30,14 +31,16 @@ const Login = () => {
   const userLogin = async (e) => {
         e.preventDefault();
         setLoading(true)
+        setResResult({result: "", error: null, message: ""})
         try{
           const response = await api.post('/login', formData)
           // console.log(response.data)
           setUser(response.data.user)
           window.location.href = '/dashboard'
         }catch(err){
-          console.log(err.response)
+          setResResult({result: "error", error: err.response.data.message, message: err.response.data.message || "Login failed"})
           setLoading(false)
+          console.log(err.response)
         }finally{
           setLoading(false)
 
@@ -50,6 +53,13 @@ const Login = () => {
     <AuthBox>
       <Logo  />
       <AuthHeader text="Login to Your Account" tColor="--primary-color" />
+       {
+              resResult.message && (
+                <div className={`p-2 rounded-md text-sm mb-2 ${resResult.result === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                  {resResult.message}
+                </div>
+              )
+            }
       <AuthForm onSubmit={userLogin} bText={loading?"Logging in...":"Login"} bColor="(--primary-color)" authType="Login" loading={loading}>
         {/* Username input */}
         <CustomInput label="Username" type="text" id="username" placeholder="Enter your username" value={formData.username} isRequired={true} handleChange={handleChange} name="username" Icon={FaUserCircle}/>

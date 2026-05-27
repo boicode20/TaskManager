@@ -8,6 +8,7 @@ import { getAdminData } from '../controller/getAdminData.js';
 import { editUserAccount } from '../controller/editUserAccount.js';
 import { deleteUserAccount } from '../controller/deleteUserAccount.js';
 import { updateUserFullname, updateUserPassword } from '../controller/updateAccountSetting.js';
+import { registerMember } from '../controller/registerMember.js';
 
 const routes = express.Router()
 
@@ -22,6 +23,9 @@ routes.post('/register-super-admin',registerSuperAdmin)
 
 // Registration for admin
 routes.post('/admin/add', authMiddleware, registerAdmin)
+// Registration for member
+routes.post('/member/add', registerMember)
+
 
 // Login route
 routes.post('/login', login)

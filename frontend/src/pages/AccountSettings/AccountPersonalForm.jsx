@@ -3,6 +3,7 @@ import { FaUserEdit } from 'react-icons/fa';
 import CustomInput from '../../components/Input/CustomInput';
 
 const AccountPersonalForm = ({handleChangeFullname,fullname,user,setUser,setLoading,handleError,disable,loading,handleChange}) => {
+  console.log(user)
   return (
     <div className="space-y-4">
           <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
@@ -37,6 +38,17 @@ const AccountPersonalForm = ({handleChangeFullname,fullname,user,setUser,setLoad
               value={user.email}
               disabled={true}
             />
+           {
+
+             user.adminCode && (<CustomInput
+              label="Admin Code"
+              id="code"
+              type="text"
+              placeholder="Your  admin code"
+              value={user.adminCode}
+              disabled={true}
+            />)
+           }
             <button
               type="submit"
               className={`w-full rounded-md py-2 text-sm font-medium text-white transition-colors hover:opacity-90 ${disable || loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-(--primary-color)'}`}

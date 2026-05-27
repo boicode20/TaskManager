@@ -12,11 +12,11 @@ export const login = async (req, res) => {
     try{
         let user = null
         // Check in SuperAdmin collection
-        user = await SuperAdmin.findOne({ username: username })
+        user = await SuperAdmin.findOne({ username: username }).populate("admins")
 
         if(!user) {
             // Check in Admin collection
-            user = await Admin.findOne({ username: username })
+            user = await Admin.findOne({ username: username }).populate('members').select("-password")
         }
         if(!user) {
             // Check in Member collection
