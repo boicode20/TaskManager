@@ -9,6 +9,7 @@ import { editUserAccount } from '../controller/editUserAccount.js';
 import { deleteUserAccount } from '../controller/deleteUserAccount.js';
 import { updateUserFullname, updateUserPassword } from '../controller/updateAccountSetting.js';
 import { registerMember } from '../controller/registerMember.js';
+import { createTask } from '../controller/createTask.js';
 
 const routes = express.Router()
 
@@ -39,6 +40,11 @@ routes.put('/account-settings/change-password', authMiddleware, updateUserPasswo
 
 // const delete admin acc 
 routes.delete('/delete-user/:type/:userId',authMiddleware,deleteUserAccount)
+
+
+
+// TASK ROUTES
+routes.post('/create-task',authMiddleware, createTask)  
 
 
 

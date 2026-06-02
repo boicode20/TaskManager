@@ -16,7 +16,7 @@ export const login = async (req, res) => {
 
         if(!user) {
             // Check in Admin collection
-            user = await Admin.findOne({ username: username }).populate('members').select("-password")
+            user = await Admin.findOne({ username: username }).populate('members')
         }
         if(!user) {
             // Check in Member collection

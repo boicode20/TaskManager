@@ -33,9 +33,9 @@ const Login = () => {
         setLoading(true)
         setResResult({result: "", error: null, message: ""})
         try{
-          const response = await api.post('/login', formData)
+           await api.post('/login', formData)
           // console.log(response.data)
-          setUser(response.data.user)
+          
           window.location.href = '/dashboard'
         }catch(err){
           setResResult({result: "error", error: err.response.data.message, message: err.response.data.message || "Login failed"})

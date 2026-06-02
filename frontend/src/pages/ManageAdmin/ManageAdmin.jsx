@@ -30,7 +30,7 @@ const ManageAdmin = () => {
       }
       {
         showEditModal && (
-          <Modal setShowModal={setShowEditModal} title={"Edit Admin Account"} subTitle={"Update the details for the selected admin account."}>
+          <Modal setShowModal={setShowEditModal} title={"Edit Admin Account"} subTitle={"Update the details for the selected admin account."} width={"w-auto"}>
             <EditAction editAdmin={editAdmin} setEditAdmin={setEditAdmin} setOriginalAdmin={setAdmins} originalAdmin={admins} setShowEditModal={setShowEditModal}/>
           </Modal>
         )

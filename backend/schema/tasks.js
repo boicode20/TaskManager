@@ -14,35 +14,26 @@ const taskSchema = new Schema({
         type: String,
         required: true
     },
-    tasks:[
+    assignedTo:[
         {
-            title:{
-                type: String,
-                required: true
-            },
-            assignedTo:{
-                type: Schema.Types.ObjectId,
-                ref: 'Member',
-                default: null
-            },
-            status:{
-                type: String,
-                enum:["","Pending", "In Progress", "Completed"],
-                default: ""
-            }
+            type: Schema.Types.ObjectId,
+            ref: 'Member',
+            required: true
         }
-    
     ],
     status:{
-                type: String,
-                enum:["Pending", "In Progress", "Completed"],
-                default: 'Pending'
+            type: String,
+            enum:["Pending", "In Progress", "Completed"],
+            default: 'Pending'
     },
     dueDate:{
         type: Date,
         required: true
     },
-
+    startDate:{
+        type: Date,
+        default: Date.now
+    }
 
 },{timestamps: true})
 

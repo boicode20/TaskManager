@@ -51,7 +51,7 @@ memberSchema.pre("findOneAndDelete", async function(){
     try{
         const member = await this.model.findOne(this.getFilter())
         if(member){
-            await Tasks.updateMany({"tasks.assignedTo":member._id},{$pull:{tasks:{assignedTo:member._id}}})
+            await Tasks.updateMany({"tasks.assignedTo":member._id},{$pull:{members:member._id}})
         }
         
     }catch(err){
