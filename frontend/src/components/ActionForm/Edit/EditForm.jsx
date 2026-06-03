@@ -5,19 +5,19 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { FaEyeLowVision } from 'react-icons/fa6';
 import api from '../../../api/api.js';
 import { showToast } from '../../../utils/toastify.js';
-const EditForm = ({editAdmin,setEditAdmin,setOriginalAdmin,setShowEditModal,originalAdmin}) => {
+const EditForm = ({editUser,setEditUser,setOriginalUser,setShowEditModal,originalUser,user}) => {
   const [showPassword,setShowPassword] = useState(false)
   const [btnDisabled,setBtnDisabled] = useState(false)
   const [newPassword,setNewPassword] = useState('')
   const [loading,setLoading] = useState(false)
-  const currentAdmin = originalAdmin.find((a) => a._id === editAdmin._id)
+  const currentUser = originalUser.find((a) => a._id === editUser._id)
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
   }
   
-  const handleUpdatedAdminChange = (e) => {
+  const handleUpdatedUserChange = (e) => {
     const {name,value} = e.target
-    setEditAdmin(prev => ({...prev,[name]: value}))
+    setEditUser(prev => ({...prev,[name]: value}))
   }
   const handlePasswordChange = (e)=>{
     setNewPassword(e.target.value)
@@ -29,45 +29,45 @@ const EditForm = ({editAdmin,setEditAdmin,setOriginalAdmin,setShowEditModal,orig
     try{
       
       const response = await api.put('/edit-user',{
-        user: 'admin',
-        _id:editAdmin._id,
-        name:editAdmin.name,
-        email:editAdmin.email,
-        username:editAdmin.username,
+        user: user,
+        _id:editUser._id,
+        name:editUser.name,
+        email:editUser.email,
+        username:editUser.username,
         password:newPassword,
-        status:editAdmin.status
+        status:editUser.status
       })
-      setOriginalAdmin(prev => prev.map(admin => admin._id === editAdmin._id ? {...admin,...editAdmin} : admin))
-      showToast("success",response.data.message||"Admin account successfuly edited.")
+      setOriginalUser(prev => prev.map(user => user._id === editUser._id ? {...user,...editUser} : user))
+      showToast("success",response.data.message||"User account successfuly edited.")
       setLoading(false)
     }catch(err){
       console.log(err)
-      showToast("error","Update admin account error.")
+      showToast("error","Update user account error.")
       setLoading(false)
     }finally{
       setLoading(false)
     }
   }
   useEffect(()=>{
-    if(editAdmin.name === currentAdmin.name && editAdmin.email === currentAdmin.email && editAdmin.username === currentAdmin.username && editAdmin.status === currentAdmin.status && newPassword === ''){
+    if(editUser.name === currentUser.name && editUser.email === currentUser.email && editUser.username === currentUser.username && editUser.status === currentUser.status && newPassword === ''){
       setBtnDisabled(true)
     }else{
       setBtnDisabled(false)
     }
-  },[editAdmin,setEditAdmin,originalAdmin,newPassword])
+  },[editUser,setEditUser,originalUser,newPassword])
   return (
     <form className="edit-form flex flex-col gap-2 mt-4 text-[#4c4b4b]" onSubmit={handleSubmitUpdate}>
-        <CustomInput label="Admin Name" type="text" id="name" placeholder="Enter your username" value={editAdmin.name} isRequired={false}  name="name" Icon={FaUserCircle} disabled={false} handleChange={handleUpdatedAdminChange}/>
-        <CustomInput label="Admin Email" type="email" id="email" placeholder="Enter your email" value={editAdmin.email} isRequired={false}  name="email" Icon={MdOutlineEmail} disabled={false} handleChange={handleUpdatedAdminChange}/>
-        <CustomInput label="Admin Username" type="text" id="username" placeholder="Enter your username" value={editAdmin.username} isRequired={false}  name="username" Icon={FaUserCircle} disabled={false} handleChange={handleUpdatedAdminChange}/>
+        <CustomInput label="Name" type="text" id="name" placeholder="Enter your username" value={editUser.name} isRequired={false}  name="name" Icon={FaUserCircle} disabled={false} handleChange={handleUpdatedUserChange}/>
+        <CustomInput label="Email" type="email" id="email" placeholder="Enter your email" value={editUser.email} isRequired={false}  name="email" Icon={MdOutlineEmail} disabled={false} handleChange={handleUpdatedUserChange}/>
+        <CustomInput label="Username" type="text" id="username" placeholder="Enter your username" value={editUser.username} isRequired={false}  name="username" Icon={FaUserCircle} disabled={false} handleChange={handleUpdatedUserChange}/>
             {/* Password input */}
-        <CustomInput label="Enter New Admin Password" type={showPassword ? "text" : "password"} id="password" placeholder="Enter admin password"  isRequired={false} value={newPassword} name="password" Icon={showPassword ? FaEye : FaEyeLowVision} handleShowPassword={handleShowPassword} handleChange={handlePasswordChange}/> 
+        <CustomInput label="Enter New Password" type={showPassword ? "text" : "password"} id="password" placeholder="Enter new password"  isRequired={false} value={newPassword} name="password" Icon={showPassword ? FaEye : FaEyeLowVision} handleShowPassword={handleShowPassword} handleChange={handlePasswordChange}/> 
         {/* Select for Disable Admin account */}
         <div className="flex flex-col gap-2">
-          <label htmlFor="disableAdmin" className="text-sm text-gray-600">Disable Admin Account</label>
-          <select id="disableAdmin" className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none " name="status" value={editAdmin.status} 
+          <label htmlFor="disableAdmin" className="text-sm text-gray-600">Manage Account</label>
+          <select id="disableAdmin" className="border border-gray-300 rounded-md py-2 px-3 focus:outline-none " name="status" value={editUser.status} 
              
-             onChange={handleUpdatedAdminChange
+             onChange={handleUpdatedUserChange
             }
              >       
             <option value="Active">Set to active</option>

@@ -2,11 +2,11 @@ import React from 'react'
 import EditHeader from './EditHeader';
 import EditForm from './EditForm';
 
-const EditAction = ({editAdmin,setEditAdmin,setOriginalAdmin,setShowEditModal,originalAdmin}) => {
+const EditAction = ({editUser,setEditUser,setOriginalUser,setShowEditModal,originalUser,user}) => {
   return (
     <div>
-      <EditHeader editAdmin={editAdmin} />
-      <EditForm editAdmin={editAdmin} setEditAdmin={setEditAdmin} setOriginalAdmin={setOriginalAdmin} setShowEditModal={setShowEditModal} originalAdmin={originalAdmin} />
+      <EditHeader editUser={editUser} />
+      <EditForm editUser={editUser} setEditUser={setEditUser} setOriginalUser={setOriginalUser} setShowEditModal={setShowEditModal} originalUser={originalUser} user={user} />
     </div>
   )
 }

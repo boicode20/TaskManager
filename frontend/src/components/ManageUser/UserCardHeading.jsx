@@ -9,7 +9,7 @@ const UserCardHeading = ({user}) => {
         <div className="card-name-email w-full min-w-0 flex flex-col">
           <h3 className="text-lg font-semibold text-[#4c4b4b] truncate">{user.name}</h3>
           <p className="text-sm text-gray-600 truncate">{user.email}</p>
-          <div className="card-role px-2 py-0.5 bg-[#3967caa1] w-fit text-white text-[.7rem] rounded-2xl flex items-center justify-center mt-1">
+          <div className="card-role px-2 py-0.5 bg-(--primary-color) w-fit text-white text-[.7rem] rounded-2xl flex items-center justify-center mt-1">
                     <p className="">{user.role}</p>
                 </div>
             </div>

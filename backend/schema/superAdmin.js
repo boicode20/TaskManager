@@ -45,6 +45,7 @@ superAdminSchema.virtual("admins",{
 })
 
 
+
 // set virtual to be included in json obj
 superAdminSchema.set("toJSON",{
     virtuals: true

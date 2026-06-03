@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import ManageAdmin from './pages/ManageAdmin/ManageAdmin';
 import AccountSettings from './pages/AccountSettings/AccountSettings';
 import Tasks from './pages/Tasks/Tasks';
+import ManageMember from './pages/ManageMember/ManageMember';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="/dashboard" element={<SecuredRoutes/>}>
         <Route path="" element={<Dashboard/>} />
         <Route path="manage-admin" element={<ManageAdmin/>} />
+        <Route path="manage-team" element={<ManageMember/>} />
         <Route path="task" element={<Tasks/>} />
 
         <Route path="account-settings" element={<AccountSettings/>} />

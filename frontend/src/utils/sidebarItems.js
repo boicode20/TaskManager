@@ -8,7 +8,7 @@ export const menuItemsByRole = {
     'Super Admin': [
       { id: 'dashboard', label: 'Dashboard', icon: MdOutlineDashboard, path: '/dashboard' },
       { id: 'manage-admin', label: 'Manage Admin', icon: RiAdminLine, path: '/dashboard/manage-admin' },
-      { id: 'manage-member', label: 'Manage Member', icon: FaUsers, path: '/dashboard/manage-member' },
+      { id: 'manage-team', label: 'Manage team', icon: FaUsers, path: '/dashboard/manage-team' },
       { id: 'settings', label: 'Account Settings', icon: CiSettings, path: '/dashboard/account-settings' },
     ],
     'Admin': [
