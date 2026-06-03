@@ -22,6 +22,8 @@ export const login = async (req, res) => {
             user = await Admin.findOne({ username: username }).populate({
                 path:"members",
                 select:"-password"
+            }).populate({
+                path:"tasks"
             })
         }
         if(!user) {

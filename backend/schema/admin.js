@@ -71,6 +71,13 @@ adminSchema.pre("findOneAndDelete", async function(){
 })
 
 
+// Virtual setup to get all tasks under the admin
+adminSchema.virtual("tasks",{
+    ref: "Task",
+    localField: "_id",
+    foreignField:"createdBy"
+})
+
 
 // Virtual setup to get all members under the admin
 adminSchema.virtual("members",{

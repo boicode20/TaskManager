@@ -8,8 +8,10 @@ const UserProvider = ({children}) => {
   const [user,setUser] = useState(null)
   const [admins,setAdmins] = useState([])
   const [members,setMembers] = useState([])
+  const [tasks,setTasks] = useState([])
   const [loading,setLoading] = useState(false)
-  const {error,userData} = useFetchUserData(user,setUser,setAdmins,setMembers,setLoading)
+  
+  const {error,userData} = useFetchUserData(user,setUser,setAdmins,setMembers,setTasks,setLoading)
 
 
   useEffect(()=>{
@@ -31,10 +33,10 @@ const UserProvider = ({children}) => {
     }
     getUserData()
   },[])
-  console.log(user)
+  console.log(members)
   
   return (
-    <UserContext.Provider value={{ user, setUser,admins,setAdmins,members,setMembers,loading,setLoading}}>
+    <UserContext.Provider value={{ user, setUser,admins,setAdmins,members,setMembers,loading,setLoading,tasks,setTasks }}>
       {children}
     </UserContext.Provider>
   )

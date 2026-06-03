@@ -9,7 +9,7 @@ const AssignedTeamForm = ({formData,handleTeamMemberSelect}) => {
                 className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-3 py-1"
               >
                 <div className={`w-6 h-6 rounded-full ${member.color} flex items-center justify-center text-white text-xs font-bold`}>
-                  {member.avatar}
+                 <img src={member.avatar} alt={member.name} />
                 </div>
                 <span className="text-xs text-gray-700">{member.name}</span>
                 <button

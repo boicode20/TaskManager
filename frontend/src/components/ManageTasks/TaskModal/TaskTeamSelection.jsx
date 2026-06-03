@@ -39,7 +39,7 @@ const TaskTeamSelection = ({ formData, teamMembers, showTeamDropdown, setShowTea
                       className="w-4 h-4 cursor-pointer"
                     />
                     <div className={`w-8 h-8 rounded-full ${member.color} flex items-center justify-center text-white text-xs font-bold`}>
-                      {member.avatar}
+                      <img src={member.avatar} alt={member.name} />
                     </div>
                     <span className="text-sm text-gray-700">{member.name}</span>
                   </div>

@@ -6,7 +6,7 @@ import TaskDescription from './TaskDescription'
 import { useEffect } from 'react'
 import api from '../../../api/api.js'
 import { showToast } from '../../../utils/toastify.js'
-const TaskModalForm = () => {
+const TaskModalForm = ({members}) => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -17,24 +17,7 @@ const TaskModalForm = () => {
   const [error,setError] = useState('')
   const [btnDisabled,setBtnDisabled] = useState(false)
 
-  // Available team members
-  const teamMembers = [
-    { _id: 1, name: 'Alex Johnson', avatar: 'AJ', color: 'bg-blue-500' },
-    { _id: 2, name: 'Sarah Chen', avatar: 'SC', color: 'bg-purple-500' },
-    { _id: 3, name: 'Mike Brown', avatar: 'MB', color: 'bg-pink-500' },
-    { _id: 4, name: 'Emma Davis', avatar: 'ED', color: 'bg-green-500' },
-    { _id: 5, name: 'John Smith', avatar: 'JS', color: 'bg-orange-500' },
-    { _id: 6, name: 'Alex Johnson', avatar: 'AJ', color: 'bg-blue-500' },
-    { _id: 7, name: 'Sarah Chen', avatar: 'SC', color: 'bg-purple-500' },
-    { _id: 8, name: 'Mike Brown', avatar: 'MB', color: 'bg-pink-500' },
-    { _id: 9, name: 'Emma Davis', avatar: 'ED', color: 'bg-green-500' },
-    { _id: 10, name: 'John Smith', avatar: 'JS', color: 'bg-orange-500' },
-    { _id: 11, name: 'Alex Johnson', avatar: 'AJ', color: 'bg-blue-500' },
-    { _id: 12, name: 'Sarah Chen', avatar: 'SC', color: 'bg-purple-500' },
-    { _id: 13, name: 'Mike Brown', avatar: 'MB', color: 'bg-pink-500' },
-    { _id: 14, name: 'Emma Davis', avatar: 'ED', color: 'bg-green-500' },
-    { _id: 15, name: 'John Smith', avatar: 'JS', color: 'bg-orange-500' },
-  ]
+
 
   const [showTeamDropdown, setShowTeamDropdown] = useState(false)
 
@@ -156,7 +139,7 @@ const TaskModalForm = () => {
       {/* Team Selection */}
      <TaskTeamSelection
         formData={formData}
-        teamMembers={teamMembers}
+        teamMembers={members}
         showTeamDropdown={showTeamDropdown}
         setShowTeamDropdown={setShowTeamDropdown}
         handleTeamMemberSelect={handleTeamMemberSelect}

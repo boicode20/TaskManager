@@ -18,7 +18,7 @@ const ManageMember = () => {
   useEffect(()=>{
     setMemberList(members) //Update the copy list whenever the original list changes
   },[members])
-  console.log(deleteUser)
+  console.log(members)
   return (
     <div className="w-full h-full max:h-auto p-6 relative">
 

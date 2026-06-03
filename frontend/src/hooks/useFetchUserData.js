@@ -1,20 +1,23 @@
 import {useState,useCallback} from 'react'
 import api from '../api/api.js'
-export const useFetchUserData = (user,setUser,setAdmins,setMembers,setLoading) =>{
+export const useFetchUserData = (user,setUser,setAdmins,setMembers,setTasks,setLoading) =>{
     const [error,setError] = useState(null)
     
     const userData = useCallback(async (url) => {
         setLoading(true)
         try {
             const response = await api.get(url)
-            setUser(response.data)
+           
+            console.log(response.data.user.tasks)
             if (response.data.user.role === "Super Admin") {
                 setUser(response.data.user)
                 setAdmins(response.data.admins)
-                setMembers(response.data.members)
+                setMembers(response.data.admins.members)
             } else if (response.data.user.role === "Admin") {
                 setUser(response.data.user)
-                setMembers(response.data.members)
+                console.log(response.data.user.tasks)
+                setMembers(response.data.user.members)
+                setTasks(response.data.user.tasks)
             }
             else if(response.data.user.role==="Member"){
                 setMembers(response.data.user)

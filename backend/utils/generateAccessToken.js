@@ -23,7 +23,8 @@ export const generateAccessToken = (user) =>{
             email: user.email,
             role: user.role,
             adminCode: user.adminCode.code, 
-            members: user.members 
+            members: user.members,
+            tasks: user.tasks
         }
     }
     else if(user.role === "Member"){
